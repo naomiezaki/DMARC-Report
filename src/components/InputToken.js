@@ -5,38 +5,18 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-function InputToken() {
+
+
+function InputToken({handleSubmit, getInput}) {
     const [input, setInput] = useState("")
-    const [report, setReport] = useState(null)
 
-    // function handleSubmit(){
-    //     console.log(input)
-    // }
-
-    const handleSubmit = async () => {
-        try {
-            const data = await (await fetch(`https://dmarc.postmarkapp.com/records/my`,
-            {
-                method: "GET",
-                mode: 'cors',
-                headers: {
-                    "Accept": "applicaton/json",
-                    "X-Api-Token": input
-                },
-            })).json()
-            console.log(data)
-            setReport(data)
-        } catch (err) {
-            console.log(err.message)
-        }
-
-    }
-
+    
+    
     return (
         <Form>
         <Row>
             <Col>
-                <Form.Control type="text" placeholder="API Token" onChange={e => setInput(e.target.value)}/>
+                <Form.Control type="text" placeholder="API Token" onChange={e => getInput(e.target.value)}/>
             </Col>
             <Col>
                 <Button variant="primary" type="button" onClick={handleSubmit}>
