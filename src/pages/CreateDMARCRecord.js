@@ -11,21 +11,22 @@ import axios from 'axios';
 function CreateDMARCRecord () {
     const [email, setEmail] = useState("");
     const [domain, setDomain] = useState("");
+    const [record, setRecord] = useState(null);
 
     const handleSubmit = (e) => {
         // console.log(token)
         e.preventDefault();
 
         let payload = {
-            email: "naomi@jbbgi.com",
-            domain: "jbbgi.com"
+            "email": email,
+            "domain": domain
         }
 
         try {
-            axios.get(`http://localhost:4000/send-record/`,payload)
+            axios.post(`http://localhost:4000/send-record`,payload)
             .then(res => {
                 console.log(res.data)
-                setReport(res.data)
+                setRecord(res.data)
             })
         } catch(err) {
             console.log(err)
@@ -51,6 +52,21 @@ function CreateDMARCRecord () {
                     </Col>
                 </Row>
             </Form>
+
+            {
+                record !== null &&
+                <div>
+                    <p>Domain: {record.domain}</p>
+                    <p>Email: {record.email}</p>
+                    <p>Created At: {record.created_at}</p>
+                    <p>Reporting URI: {record.reporting_uri}</p>
+                    <p>Public Token: {record.public_token}</p>
+                    <p>Private Token: {record.private_token}</p>
+                    
+                    
+                </div>
+                
+            }
         </Container>
     )
 }

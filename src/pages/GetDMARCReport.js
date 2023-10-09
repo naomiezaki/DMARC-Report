@@ -17,7 +17,11 @@ function GetDMARCReport(){
         e.preventDefault();
 
         try {
-            axios.get(`http://localhost:4000/get-report/?${token}`)
+            axios.get(`http://localhost:4000/get-report`,{
+                params: {
+                    token: token
+                }
+            })
             .then(res => {
                 console.log(res.data)
                 setReport(res.data)
