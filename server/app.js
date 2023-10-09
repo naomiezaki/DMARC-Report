@@ -9,6 +9,7 @@ app.use(cors());
 
 app.use('/', routes)
 app.use('/get-report', routes)
+app.use('/send-record', routes)
 
 
 app.listen(port,() => {

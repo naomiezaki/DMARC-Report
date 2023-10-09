@@ -23,4 +23,19 @@ router.get("/get-report/:token", async(req,res)=> {
     }
 })
 
+router.get("/send-record", async(req, res) => {
+    console.log(req)
+    // try {
+    //     const data = await axios.post("https://dmarc.postmarkapp.com/records", {
+    //         "email": "email@domain.com",
+    //         "domain": "activecampaign.com"
+    //     }, {
+    //         headers: {
+    //             "Accept": "application/json",
+    //             "Content-Type": "application/json"
+    //         }
+    //     })
+    // }
+})
+
 module.exports = router;

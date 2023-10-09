@@ -1,10 +1,14 @@
 import { useState } from "react";
-import InputToken from "../components/InputToken";
+
 import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 
 import axios from 'axios';
 
-function DMARCReport(){
+function GetDMARCReport(){
     const [report, setReport] = useState(null)
     const [token, setToken] = useState(null)
 
@@ -23,14 +27,23 @@ function DMARCReport(){
         }
     }
 
-    const getInput = (input) => {
-        setToken(input)
-    }
-
     return(
         <Container className="p-3">
-            <h1 className="header">DMARC Report</h1>
-            <InputToken handleSubmit={handleSubmit} getInput={getInput}/>
+            <h1 className="header">Get DMARC Report</h1>
+
+            <Form>
+                <Row>
+                    <Col>
+                        <Form.Control type="text" placeholder="API Token" onChange={e => setToken(e.target.value)}/>
+                    </Col>
+                    <Col>
+                        <Button variant="primary" type="button" onClick={handleSubmit}>
+                            Submit
+                        </Button>
+                    </Col>
+                </Row>
+            </Form>
+
             {
                 report !== null &&
                 <div>
@@ -47,4 +60,4 @@ function DMARCReport(){
     
 }
 
-export default DMARCReport
+export default GetDMARCReport;
