@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
     res.send("Hello, World")
 })
 
-router.get("/get-report", async(req,res)=> {
+router.get("/get-record", async(req,res)=> {
     try {
         const response = await axios.get("https://dmarc.postmarkapp.com/records/my", {
             headers: {

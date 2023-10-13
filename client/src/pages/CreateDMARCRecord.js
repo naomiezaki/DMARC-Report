@@ -34,13 +34,16 @@ function CreateDMARCRecord () {
     }
 
     return (
-        <Container>
+        <Container className="p-3">
             <h1 className="header">Create DMARC Record</h1>
 
             <Form>
                 <Row>
                     <Col>
                         <Form.Control type="email" placeholder="Email" onChange={e => setEmail(e.target.value)}/>
+                        
+                    </Col>
+                    <Col>
                         <Form.Control type="text" placeholder='Domain' onChange={e => setDomain(e.target.value)}/>
                     </Col>
                 </Row>

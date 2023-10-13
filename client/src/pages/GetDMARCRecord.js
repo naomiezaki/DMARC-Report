@@ -8,8 +8,8 @@ import Button from 'react-bootstrap/Button';
 
 import axios from 'axios';
 
-function GetDMARCReport(){
-    const [report, setReport] = useState(null)
+function GetDMARCRecord(){
+    const [record, setRecord] = useState(null)
     const [token, setToken] = useState(null)
 
     const handleSubmit = (e) => {
@@ -17,14 +17,14 @@ function GetDMARCReport(){
         e.preventDefault();
 
         try {
-            axios.get(`http://localhost:4000/get-report`,{
+            axios.get(`http://localhost:4000/get-record`,{
                 params: {
                     token: token
                 }
             })
             .then(res => {
                 console.log(res.data)
-                setReport(res.data)
+                setRecord(res.data)
             })
         } catch(err) {
             console.log(err)
@@ -33,14 +33,14 @@ function GetDMARCReport(){
 
     return(
         <Container className="p-3">
-            <h1 className="header">Get DMARC Report</h1>
+            <h1 className="header">Get DMARC Record</h1>
 
             <Form>
                 <Row>
-                    <Col>
+                    <Col className="col-md-10">
                         <Form.Control type="text" placeholder="API Token" onChange={e => setToken(e.target.value)}/>
                     </Col>
-                    <Col>
+                    <Col className="col-md-2">
                         <Button variant="primary" type="button" onClick={handleSubmit}>
                             Submit
                         </Button>
@@ -49,13 +49,13 @@ function GetDMARCReport(){
             </Form>
 
             {
-                report !== null &&
+                record !== null &&
                 <div>
-                    <p>Domain: {report.domain}</p>
-                    <p>Public Token: {report.public_token}</p>
-                    <p>Created At: {report.created_at}</p>
-                    <p>Reporting URI: {report.reporting_uri}</p>
-                    <p>Email: {report.email}</p>
+                    <p>Domain: {record.domain}</p>
+                    <p>Public Token: {record.public_token}</p>
+                    <p>Created At: {record.created_at}</p>
+                    <p>Reporting URI: {record.reporting_uri}</p>
+                    <p>Email: {record.email}</p>
                 </div>
                 
             }
@@ -64,4 +64,4 @@ function GetDMARCReport(){
     
 }
 
-export default GetDMARCReport;
+export default GetDMARCRecord;

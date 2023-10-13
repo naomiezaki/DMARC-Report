@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyParser.json())
 
 app.use('/', routes)
-app.use('/get-report', routes)
+app.use('/get-record', routes)
 app.use('/send-record', routes)
 
 
