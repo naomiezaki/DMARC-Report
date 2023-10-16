@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
 import axios from 'axios';
+import Result from "../components/Result";
 
 function GetDMARCRecord(){
     const [record, setRecord] = useState(null)
@@ -35,7 +36,7 @@ function GetDMARCRecord(){
         <Container className="p-3">
             <h1 className="header">Get DMARC Record</h1>
 
-            <Form>
+            <Form className="form">
                 <Row>
                     <Col className="col-md-10">
                         <Form.Control type="text" placeholder="API Token" onChange={e => setToken(e.target.value)}/>
@@ -50,14 +51,7 @@ function GetDMARCRecord(){
 
             {
                 record !== null &&
-                <div>
-                    <p>Domain: {record.domain}</p>
-                    <p>Public Token: {record.public_token}</p>
-                    <p>Created At: {record.created_at}</p>
-                    <p>Reporting URI: {record.reporting_uri}</p>
-                    <p>Email: {record.email}</p>
-                </div>
-                
+                <Result record={record}/>
             }
         </Container>
     )

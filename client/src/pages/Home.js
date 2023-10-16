@@ -1,10 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
 import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 
 import GetDMARCReport from './GetDMARCRecord';
@@ -45,7 +41,7 @@ function Home() {
     }
 
     return (
-        <Container className="page justify-content-center">
+        <Container fluid className="page justify-content-center">
             <Nav defaultActiveKey="/home" className="vertical-nav flex-column">
                 <Nav.Link ref={defaultActiveRef} className="vertical-nav-link" onClick={(event)=>openTab(event, 'getDMARCRecord')}>Get DMARC Record</Nav.Link>
                 <Nav.Link className="vertical-nav-link" onClick={(event)=>openTab(event, 'createDMARCRecord')}>Create DMARC Record</Nav.Link>
@@ -58,14 +54,6 @@ function Home() {
             <Container id="createDMARCRecord" className="vertical-nav-tabcontent m-0">
                <CreateDMARCRecord/>
             </Container>
-            {/* <Row>
-                <Col>
-                    <GetDMARCReport/>
-                </Col>
-                <Col>
-                    <CreateDMARCRecord/>
-                </Col>
-            </Row> */}
         </Container>
     )
 }

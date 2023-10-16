@@ -8,6 +8,8 @@ import Button from 'react-bootstrap/Button';
 
 import axios from 'axios';
 
+import Result from "../components/Result";
+
 function CreateDMARCRecord () {
     const [email, setEmail] = useState("");
     const [domain, setDomain] = useState("");
@@ -37,38 +39,29 @@ function CreateDMARCRecord () {
         <Container className="p-3">
             <h1 className="header">Create DMARC Record</h1>
 
-            <Form>
+            <Form className="form">
                 <Row>
-                    <Col>
+                    <Col className="col-xs-12 col-sm-12 col-lg-5">
                         <Form.Control type="email" placeholder="Email" onChange={e => setEmail(e.target.value)}/>
                         
                     </Col>
-                    <Col>
+                    <Col className="col-xs-12 col-sm-12 col-lg-5">
                         <Form.Control type="text" placeholder='Domain' onChange={e => setDomain(e.target.value)}/>
                     </Col>
-                </Row>
-                <Row>
-                     <Col>
+                    <Col className="col-xs-12 col-sm-12 col-lg-2">
                         <Button variant="primary" type="button" onClick={handleSubmit}>
                             Submit
                         </Button>
                     </Col>
                 </Row>
+                {/* <Row>
+                     
+                </Row> */}
             </Form>
 
             {
                 record !== null &&
-                <div>
-                    <p>Domain: {record.domain}</p>
-                    <p>Email: {record.email}</p>
-                    <p>Created At: {record.created_at}</p>
-                    <p>Reporting URI: {record.reporting_uri}</p>
-                    <p>Public Token: {record.public_token}</p>
-                    <p>Private Token: {record.private_token}</p>
-                    
-                    
-                </div>
-                
+                <Result record={record}/>
             }
         </Container>
     )
