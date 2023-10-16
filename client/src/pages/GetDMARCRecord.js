@@ -24,7 +24,6 @@ function GetDMARCRecord(){
                 }
             })
             .then(res => {
-                console.log(res.data)
                 setRecord(res.data)
             })
         } catch(err) {
@@ -33,16 +32,16 @@ function GetDMARCRecord(){
     }
 
     return(
-        <Container className="p-3">
-            <h1 className="header">Get DMARC Record</h1>
+        <div>
+            <h1 className="header pt-5">Get DMARC Record</h1>
 
             <Form className="form">
                 <Row>
-                    <Col className="col-md-10">
+                    <Col className="col-12 col-md-10 pt-3">
                         <Form.Control type="text" placeholder="API Token" onChange={e => setToken(e.target.value)}/>
                     </Col>
-                    <Col className="col-md-2">
-                        <Button variant="primary" type="button" onClick={handleSubmit}>
+                    <Col className="col-12 col-md-2 pt-3">
+                        <Button variant="primary" type="button" style={{width: '100%'}} onClick={handleSubmit}>
                             Submit
                         </Button>
                     </Col>
@@ -53,7 +52,7 @@ function GetDMARCRecord(){
                 record !== null &&
                 <Result record={record}/>
             }
-        </Container>
+        </div>
     )
     
 }

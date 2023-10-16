@@ -22,7 +22,7 @@ function Home() {
     }, []);
 
     const openTab = (event, pageName) => {
-        let i, tabcontents, tablinks;
+        let tabcontents, tablinks;
 
         tabcontents = document.getElementsByClassName('vertical-nav-tabcontent');
 
@@ -41,20 +41,20 @@ function Home() {
     }
 
     return (
-        <Container fluid className="page justify-content-center">
+        <div className="page justify-content-center">
             <Nav defaultActiveKey="/home" className="vertical-nav flex-column">
                 <Nav.Link ref={defaultActiveRef} className="vertical-nav-link" onClick={(event)=>openTab(event, 'getDMARCRecord')}>Get DMARC Record</Nav.Link>
                 <Nav.Link className="vertical-nav-link" onClick={(event)=>openTab(event, 'createDMARCRecord')}>Create DMARC Record</Nav.Link>
             </Nav>
 
-            <Container id="getDMARCRecord" className="vertical-nav-tabcontent m-0">
+            <div id="getDMARCRecord" className="vertical-nav-tabcontent m-0">
                 <GetDMARCReport/>
-            </Container>
+            </div>
 
-            <Container id="createDMARCRecord" className="vertical-nav-tabcontent m-0">
+            <div id="createDMARCRecord" className="vertical-nav-tabcontent m-0">
                <CreateDMARCRecord/>
-            </Container>
-        </Container>
+            </div>
+        </div>
     )
 }
 

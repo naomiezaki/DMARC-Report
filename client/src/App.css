@@ -28,7 +28,7 @@ h1{
   background-color: #19181D;
   /* width: 270px; */
   width: auto;
-  height: 70%;
+  height: 100%;
 }
 
 .vertical-nav-link {
@@ -59,9 +59,9 @@ h1{
   float: left;
   padding: 0px 12px;
   /* border: 1px solid #ccc; */
-  width: 70% !important;
+  width: 100% !important;
   border-left: none;
-  height: 70%;
+  height: 100%;
   /* background-color: #EEA243; */
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(230, 217, 50,0.6587009803921569) 100%);;
 }
