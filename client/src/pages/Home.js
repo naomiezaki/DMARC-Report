@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 
 import GetDMARCReport from './GetDMARCRecord';
 import CreateDMARCRecord from './CreateDMARCRecord';
+import UpdateDMARCRecord from "./UpdateDMARCRecord";
 
 function Home() {
     const defaultActiveRef = useRef(null);
@@ -45,6 +46,7 @@ function Home() {
             <Nav defaultActiveKey="/home" className="vertical-nav flex-column">
                 <Nav.Link ref={defaultActiveRef} className="vertical-nav-link" onClick={(event)=>openTab(event, 'getDMARCRecord')}>Get DMARC Record</Nav.Link>
                 <Nav.Link className="vertical-nav-link" onClick={(event)=>openTab(event, 'createDMARCRecord')}>Create DMARC Record</Nav.Link>
+                <Nav.Link className="vertical-nav-link" onClick={(event)=>openTab(event, 'updateDMARCRecord')}>Update DMARC Record</Nav.Link>
             </Nav>
 
             <div id="getDMARCRecord" className="vertical-nav-tabcontent m-0">
@@ -53,6 +55,10 @@ function Home() {
 
             <div id="createDMARCRecord" className="vertical-nav-tabcontent m-0">
                <CreateDMARCRecord/>
+            </div>
+
+            <div id="updateDMARCRecord" className="vertical-nav-tabcontent m-0">
+               <UpdateDMARCRecord/>
             </div>
         </div>
     )

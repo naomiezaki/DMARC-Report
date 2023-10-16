@@ -40,4 +40,21 @@ router.post("/send-record", async(req, res) => {
     }
 })
 
+router.patch("/update-record", async(req, res) => {
+    try {
+        const response = await axios.patch("https://dmarc.postmarkapp.com/records/my", JSON.stringify({
+            "email": req.body.email,
+        }), {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "X-Api-Token": req.body.token
+            }
+        })
+        res.status(200).send(response.data)
+    } catch (err) {
+        console.log(err)
+    }
+})
+
 module.exports = router;

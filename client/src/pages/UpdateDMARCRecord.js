@@ -10,9 +10,9 @@ import axios from 'axios';
 
 import Result from "../components/Result";
 
-function CreateDMARCRecord () {
+function UpdateDMARCRecord () {
     const [email, setEmail] = useState("");
-    const [domain, setDomain] = useState("");
+    const [token, setToken] = useState("");
     const [record, setRecord] = useState(null);
 
     const handleSubmit = (e) => {
@@ -21,11 +21,11 @@ function CreateDMARCRecord () {
 
         let payload = {
             "email": email,
-            "domain": domain
+            "token": token
         }
 
         try {
-            axios.post(`http://localhost:4000/send-record`,payload)
+            axios.patch(`http://localhost:4000/update-record`,payload)
             .then(res => {
                 setRecord(res.data)
             })
@@ -36,7 +36,7 @@ function CreateDMARCRecord () {
 
     return (
         <div>
-            <h1 className="header pt-5">Create DMARC Record</h1>
+            <h1 className="header pt-5">Update DMARC Record</h1>
 
             <Form className="form">
                 <Row>
@@ -44,7 +44,7 @@ function CreateDMARCRecord () {
                         <Form.Control type="email" placeholder="Email" onChange={e => setEmail(e.target.value)}/>
                     </Col>
                     <Col className="col-12 col-lg-5 pt-3">
-                        <Form.Control type="text" placeholder='Domain' onChange={e => setDomain(e.target.value)}/>
+                        <Form.Control type="text" placeholder='API Token' onChange={e => setToken(e.target.value)}/>
                     </Col>
                     <Col className="col-12 col-lg-2 pt-3">
                         <Button variant="primary" type="button" style={{width: '100%'}} onClick={handleSubmit}>
@@ -65,4 +65,4 @@ function CreateDMARCRecord () {
     )
 }
 
-export default CreateDMARCRecord;
+export default UpdateDMARCRecord;
