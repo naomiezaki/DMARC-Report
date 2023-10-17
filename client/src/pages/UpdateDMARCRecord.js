@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -18,6 +17,7 @@ function UpdateDMARCRecord () {
     const handleSubmit = (e) => {
         // console.log(token)
         e.preventDefault();
+        setRecord(null);
 
         let payload = {
             "email": email,
@@ -58,7 +58,7 @@ function UpdateDMARCRecord () {
             </Form>
 
             {
-                record !== null &&
+                (record !== null && record !== undefined) &&
                 <Result record={record}/>
             }
         </div>

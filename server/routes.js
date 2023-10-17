@@ -16,7 +16,16 @@ router.get("/get-record", async(req,res)=> {
             }
         })
         // console.log(response.data)
-        res.status(200).send(response.data)
+        console.log(response)
+
+        if(response.status === 200) {
+            res.status(200).send(response.data);
+        } else if (response.status === 204){
+            console.log("HTTP Status 204: ",response)
+            res.status(204).send(response.statusText);
+        } else {
+            res.status(response.status).send(response.statusText)
+        }
         // res.json(response.data)
     } catch (err) {
         console.log(err)
@@ -52,6 +61,28 @@ router.patch("/update-record", async(req, res) => {
             }
         })
         res.status(200).send(response.data)
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+router.delete("/delete-record", async(req, res) =>{
+    try {
+        const response = await axios.delete("https://dmarc.postmarkapp.com/records/my", {
+            headers: {
+                "Accept": "application/json",
+                "X-Api-Token": req.body.token
+            }
+        });
+
+        if(response.status === 200) {
+            res.status(200).send(response.data);
+        } else if (response.status === 204){
+            res.status(204).send(response.statusText);
+        } else {
+            res.status(response.status).send(response.statusText)
+        }
+
     } catch (err) {
         console.log(err)
     }
