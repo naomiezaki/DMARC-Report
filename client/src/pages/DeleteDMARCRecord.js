@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 
 import axios from 'axios';
 
@@ -12,11 +13,13 @@ import Result from "../components/Result";
 function DeleteDMARCRecord () {
     const [token, setToken] = useState("");
     const [record, setRecord] = useState(null);
+    const [status, setStatus] = useState(null);
 
     const handleSubmit = (e) => {
         // console.log(token)
         e.preventDefault();
         setRecord(null);
+        setStatus(null);
 
         try {
             axios.delete(`http://localhost:4000/delete-record`,{
@@ -26,6 +29,7 @@ function DeleteDMARCRecord () {
             })
             .then(res => {
                 console.log(res);
+                setStatus(res.status);
                 console.log("Deleted: ", Object.keys(res.data).length)
                 setRecord(res.data)
             })
@@ -49,14 +53,17 @@ function DeleteDMARCRecord () {
                         </Button>
                     </Col>
                 </Row>
-                {/* <Row>
-                     
-                </Row> */}
             </Form>
 
             {
-                (record !== null && record !== undefined && Object.keys(record).length > 0) &&
+                (record !== null && record !== undefined && Object.keys(record).length > 0) ?
                 <Result record={record}/>
+                :
+                <>
+                {
+                    (status !== null && status !== undefined && status == 204) && <Alert key={'success'} variant={'success'}>Record successfully deleted</Alert>
+                }
+                </>
             }
         </div>
     )

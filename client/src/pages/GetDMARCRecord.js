@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 
 import axios from 'axios';
 import Result from "../components/Result";
@@ -11,11 +12,13 @@ import Result from "../components/Result";
 function GetDMARCRecord(){
     const [record, setRecord] = useState(null)
     const [token, setToken] = useState(null)
+    const [isFetched, setIsFetched] = useState(false)
 
     const handleSubmit = (e) => {
         // console.log(token)
         e.preventDefault();
         setRecord(null)
+        setIsFetched(false)
 
         try {
             axios.get(`http://localhost:4000/get-record`,{
@@ -25,7 +28,9 @@ function GetDMARCRecord(){
             })
             .then(res => {
                 console.log(res)
+                console.log("Get: ",res.data)
                 setRecord(res.data)
+                setIsFetched(true)
             })
         } catch(err) {
             console.log(err)
@@ -50,8 +55,14 @@ function GetDMARCRecord(){
             </Form>
 
             {
-                (record !== null && record !== undefined) &&
+                (record !== null && record !== undefined && Object.keys(record).length > 0 && isFetched) ?
                 <Result record={record}/>
+                :
+                <>
+                {
+                    isFetched && <Alert key={'danger'} variant={'danger'}>Record not found.</Alert>
+                }
+                </>
             }
         </div>
     )

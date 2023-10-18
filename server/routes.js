@@ -13,16 +13,12 @@ router.get("/get-record", async(req,res)=> {
             headers: {
                 "Accept": "application/json",
                 "X-Api-Token": req.query.token
+                // "X-Api-Token": req.body.token
             }
         })
-        // console.log(response.data)
-        console.log(response)
 
         if(response.status === 200) {
             res.status(200).send(response.data);
-        } else if (response.status === 204){
-            console.log("HTTP Status 204: ",response)
-            res.status(204).send(response.statusText);
         } else {
             res.status(response.status).send(response.statusText)
         }
