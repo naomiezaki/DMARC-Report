@@ -45,13 +45,14 @@ h1{
 }
 
 .vertical-nav-link:hover {
-  background-color: #51BBBB;
-  color: #19181D !important;
+  background-color: #077070;
+  color: white !important;
 }
 
 .vertical-nav-link.active {
-  background-color: #B4EEEE;
-  color: #19181D !important;
+  background-color: #309D9D;
+  color: white !important;
+  font-weight: 500
 }
 
 .vertical-nav-tabcontent {
