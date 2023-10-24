@@ -21,7 +21,7 @@ function GetDMARCRecord(){
         setIsFetched(false)
 
         try {
-            axios.get(`http://localhost:4000/get-record`,{
+            axios.get(`https://dmarc-report-backend.vercel.app/get-record`,{
                 params: {
                     token: token
                 }

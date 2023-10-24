@@ -25,7 +25,7 @@ function CreateDMARCRecord () {
         }
 
         try {
-            axios.post(`http://localhost:4000/send-record`,payload)
+            axios.post(`https://dmarc-report-backend.vercel.app/send-record`,payload)
             .then(res => {
                 setRecord(res.data)
             })

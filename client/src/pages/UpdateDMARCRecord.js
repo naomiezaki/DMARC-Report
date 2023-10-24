@@ -25,7 +25,7 @@ function UpdateDMARCRecord () {
         }
 
         try {
-            axios.patch(`http://localhost:4000/update-record`,payload)
+            axios.patch(`https://dmarc-report-backend.vercel.app/update-record`,payload)
             .then(res => {
                 setRecord(res.data)
             })

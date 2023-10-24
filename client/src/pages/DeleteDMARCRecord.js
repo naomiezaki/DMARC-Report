@@ -22,7 +22,7 @@ function DeleteDMARCRecord () {
         setStatus(null);
 
         try {
-            axios.delete(`http://localhost:4000/delete-record`,{
+            axios.delete(`https://dmarc-report-backend.vercel.app/delete-record`,{
                 data: {
                     token: token
                 }
