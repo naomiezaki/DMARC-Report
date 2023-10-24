@@ -4,7 +4,7 @@ const axios = require('axios');
 
 
 router.get("/", (req, res) => {
-    res.send("Hello, World")
+    res.send("Express on Vercel")
 })
 
 router.get("/get-record", async(req,res)=> {
